@@ -53,19 +53,6 @@ return {
       cyclic = true,
     })
 
-    local weekdays = augend.constant.new({
-      elements = {
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      },
-      word = true,
-      cyclic = true,
-    })
 
     local months = augend.constant.new({
       elements = {
@@ -86,14 +73,6 @@ return {
       cyclic = true,
     })
 
-    local capitalized_boolean = augend.constant.new({
-      elements = {
-        "True",
-        "False",
-      },
-      word = true,
-      cyclic = true,
-    })
 
     return {
       dials_by_ft = {
@@ -116,11 +95,12 @@ return {
           augend.integer.alias.decimal_int, -- nonnegative and negative decimal number
           augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
           augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
+          augend.alias.en_weekday,       -- Mon, Tue, ..., Sat, Sun
+          augend.constant.alias.en_weekday_full, -- Monday, Tuesday, ..., Saturday, Sunday
           ordinal_numbers,
-          weekdays,
           months,
-          capitalized_boolean,
           augend.constant.alias.bool, -- boolean value (true <-> false)
+          augend.constant.alias.Bool, -- boolean value (True <-> False)
           logical_alias,
         },
         vue = {
